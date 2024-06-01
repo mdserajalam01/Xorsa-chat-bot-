@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.I Xorsa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: lightsteelblue;
+            background-image: url(./resturant.png);
+            background-repeat: no-repeat;
+            background-size: 30%;
+            background-position-x: 60px;
+            background-position-y: 50px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+
+        .container {
+
+            width: 300px;
+            height: 70vh;
+            margin: auto;
+            margin-top: 100px;
+            background: linear-gradient(yellow, #4bebe8, #e0e01f);
+            border: 2px solid #f32f2f;
+            box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.61);
+            border-radius: 10px;
+
+        }
+
+        .chating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .img1 {
+
+            display: flex;
+            transition: .5s ease-in-out;
+            text-align: start;
+            justify-content: center;
+            color: whitesmoke;
+            width: 245px;
+            height: 250px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            background: darkslategray;
+            padding: 15px;
+            border: .5px solid red;
+            overflow: auto;
+            font-weight: 300;
+            line-height: 1.3;
+            font-size: 18px;
+            opacity: 1;
+            border-radius: 8px;
+        }
+
+        input,
+        .btnn {
+            animation-name: changecolor;
+            transition: ease-in-out;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        input {
+            border-radius: none;
+            outline: none;
+            opacity: 1;
+            font-size: 15px;
+            color: black;
+        }
+
+
+        .img1:hover {
+            transition: 1.5s ease-in-out;
+            box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.5);
+
+        }
+
+
+        input {
+            align-self: flex-end;
+            margin-bottom: 100px;
+            margin-left: 8px;
+            padding: 8px 12px;
+            border-radius: 25px;
+            transition: 0.5s ease-in-out;
+            border: 2px solid #f62929;
+
+        }
+
+        input:hover {
+            transition: 1.5s ease-in-out;
+            box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.5);
+
+
+        }
+
+        .btnn {
+
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 100px;
+            background-color: whitesmoke;
+            margin-left: 5px;
+            transition: 0.5s ease-in-out;
+            border-radius: 50%;
+
+            border: 2.3px solid #f04426;
+        }
+
+
+        .btnn:hover {
+
+            transition: 1.5s ease-in-out;
+            box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.5);
+            background: #c8bbf1;
+            border-radius: 50%;
+        }
+
+
+
+        h2 {
+            text-align: center;
+            padding: 10px;
+            font-size: 25px;
+            color: white;
+            opacity: 1;
+            animation-name: changecolor1;
+            transition: ease-in-out;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes changecolor1 {
+            0% {
+                color: #5900ff;
+                transition: ease-in-out;
+            }
+
+            25% {
+                color: rgb(255, 0, 0);
+
+
+                transition: ease-in-out;
+            }
+
+            50% {
+                color: rgb(0, 0, 255);
+
+
+                transition: ease-in-out;
+            }
+
+            75% {
+                color: rgb(255, 255, 255);
+
+
+                transition: ease-in-out;
+            }
+
+            100% {
+
+                color: rgb(169, 22, 185);
+                transition: ease-in-out;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <h2 id="xor"> Xorsa</h2>
+        <!--<img class="img1" src="./dvlprtable.png" alt="" id="fimg">!-->
+        <aside class="img1" id="fimg">Please Call me xorsa</aside>
+
+        <div class="chating">
+            <input type="text" name="name" id="user" step="any" placeholder="chatting with AI.." />
+
+            <div>
+                <button class="btnn" id="sender" onclick="chat()">>></button>
+            </div>
+        </div>
+    </div>
+    <audio id="song">
+        <source src="./main_akela or...m4a">
+    </audio>
+    <audio id="nxt">
+        <source src="./Asim Azhar - Jo Tu Na Mila ( 128kbps ).mp3">
+    </audio>
+    <audio id="h" src="./03 HAMD-E-BARI TAALA.mp3"></audio>
+
+
+
+    <script>function chat() {
+            let usr = document.getElementById('user').value;
+            var xorsa = document.getElementById('fimg');
+            var mainEl = document.getElementById('main');
+            //const senderEl=document.getElementById('sender');
+            const utterance = new SpeechSynthesisUtterance();
+            utterance.lang = 'en-US';
+            //let femaleVoice = null;
+            //const voices = speechSynthesis.getVoices();
+            //for (let i = 0; i < voices.length; i++) {
+            //if (voices[i].name == 'Google US English Female') {
+            //  femaleVoice = voices[i];
+            //    Break;
+            //  }
+            //}
+            //if (femaleVoice) {
+            //  utterance.voice = femaleVoice;
+            //}
+            if (usr == 'xorsa date' || usr == 'xorsa date batao' || usr == 'xorsa show me date' || usr == 'xorsa show me today date' || usr == 'date' || usr == 'xrsa please date batao' || usr == 'xorsa aaj ka date batao' || usr == 'xorsa aaj konsa date hai') {
+                const now = new Date();
+                const date = now.toLocaleDateString();
+                // const utterance = new SpeechSynthesisUtterance();
+                //utterance.lang = 'en-US';
+
+
+                xorsa.innerHTML = `Today's date is:  ${date}.`;
+                const xorsaEl = xorsa.innerHTML;
+
+                utterance.text = xorsaEl;
+
+                speechSynthesis.speak(utterance);
+
+
+                //});
+                //document.write(date);
+                Break;
+            }
+            if (usr == 'xorsa show me date and time' || usr == 'xorsa please show me date and time' || usr == 'xorsa date and time' || usr == 'xorsa date and time batao') {
+                const now = new Date();
+                const time = now.toLocaleTimeString();
+                const date = now.toLocaleDateString();
+
+                xorsa.style.color = "yellow";
+                //senderEl.addEventListener('click',()=>{
+                xorsa.innerHTML = `Today's date and time is. :${time}\t${date}`;
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+                //});
+
+                Break;
+            }
+            if (usr == 'xorsa what time now' || usr == 'xorsa show me time' || usr == 'xorsa time batao' || usr == 'xorsa time kya ho rha hai' || usr == 'xorsa plz show me time' || usr == 'xorsa time bata do') {
+                const now = new Date();
+                const time = now.toLocaleTimeString();
+                //const date=now.toLocaleDateString();
+
+                xorsa.style.color = "yellow";
+                xorsa.innerHTML = `${time} \n Thank you for ask me...`;
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+            if (usr == 'xorsa today is' || usr == 'xorsa aaj konsa din hai' || usr == 'xorsa aaj ka tempreture batao') {
+                const now = new Date();
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+                const datetime = now.toLocaleDateString('en-US', options);
+                xorsa.innerHTML = datetime;
+                xorsa.style.color = "yellow";
+                Break;
+            }
+
+            if (usr == 'xorsa hello' || usr == 'xorsa hy' || usr == 'hello xorsa' || usr == 'xorsa hi' || usr == 'hii xorsa' || usr == 'hi xorsa' || usr == 'hi' || usr == 'hello' || usr == 'hii') {
+
+                xorsa.innerHTML = "Hii I am xorsa, Let's Fun with Me, I am a Machine Developed By Seraj, purpose of Helping. Human some Question...";
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+            if (usr == 'your name is xorsa' || usr == 'are you xorsa' || usr == 'are u xorsa' || usr == 'r u xorsa' || usr == 'are your name xorsa' || usr == 'xorsa' || usr == 'what is your name' || usr == 'what your name') {
+                //let xor = ('Yes Call me xorsa tell me How this name!');
+                // document.getElementById('xor').innerHTML = xor;
+
+
+                xorsa.innerHTML = "Yes Call Me xorsa Seraj Give This Beautifull Name, How this name Tell Me Plz...";
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+            if (usr == 'xorsa are you girl' || usr == 'are u girl' || usr == 'r u girl' || usr == 'are you girl' || usr == 'are you boy' || usr == 'are u boy' || usr == 'r u boy' || usr == 'are you male' || usr == 'are you female' || usr == 'you are female' || usr == 'you are male') {
+                // alert('I am not Human but I am A.I developed me Seraj Noor');
+
+
+                xorsa.innerHTML = "Absolutely Not, I am Not Human I am a Machine Developed For the Human Helping... ";
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+            if (usr == 'nice name' || usr == 'good name' || usr == 'nice' || usr == 'good' || usr == 'yes nice name') {
+
+
+                xorsa.innerHTML = 'Thank you for the heart';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+            if (usr == 'very bad name' || usr == 'very bad' || usr == 'bad name' || usr == 'bad' || usr == 'not good name') {
+
+
+                xorsa.innerHTML = 'Thanx no-problem I Know The Seraj He is Developed Me And Give Me a Beautifull Name...';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+            if (usr == 'xorsa who is develop you' || usr == 'who is develope you' || usr == 'xorsa who develop you') {
+                xorsa.innerHTML = 'I am Machine Model Language Develop By Seraj In March 03  2023 for The Purpose of Solve The Problem to The User...'
+                xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+                Break;
+            }
+
+            if (usr == 'xorsa how are you' || usr == 'how are you xorsa' || usr == 'hi xorsa how are you' || usr == 'how are you' || usr == 'How are You' || usr == 'how r u' || usr == 'hw r u') {
+
+
+                xorsa.innerHTML = 'Yes I am Always Fine And Your?';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+
+
+            if (usr == 'yes fine' || usr == 'yes i am fine' || usr == 'fine' || usr == 'Ok' || usr == 'Fine' || usr == 'yes im good' || usr == 'help me' || usr == 'can you help me xorsa' || usr == 'help me plz' || usr == 'can you help me' || usr == 'can you help' || usr == 'xorsa can you help' || usr == 'xorsa plz help' || usr == 'plz help' || usr == 'xorsa help me' || usr == 'help me xorsa') {
+
+
+                xorsa.innerHTML = 'Yes How Can I Help You Tell Me Now';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+
+            if (usr == 'what is your name' || usr == 'whats your name' || usr == 'your name' || usr == 'name plz' || usr == 'xorsa what is your name') {
+
+
+                xorsa.innerHTML = 'Call me xorsa, I am an AI language model. may i know your name..';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+
+            if (usr == 'Zeeshan Hassan' || usr == 'Abdul Khabeer' || usr == 'Shabab' || usr == 'Kaif' || usr == 'Seraj' || usr == 'Mustaquim' || usr == 'Kashif' || usr == 'Rahil' || usr == 'Aftab' || usr == 'Abdur Rahman' || usr == 'Parwez' || usr == 'Zaheer Khan') {
+                var name = usr;
+
+
+                xorsa.innerHTML = `Wow nice Name thanx and nice too meet you ${name}...`;
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+
+            if (usr == 'who r you' || usr == 'who r you' || usr == 'who are you' || usr == 'who r u' || usr == 'who are u' || usr == 'who u' || usr == 'whu you') {
+
+
+
+                xorsa.innerHTML = 'I am xorsa,a conversational AI language model developed by Seraj';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+
+            if (usr == 'xorsa what is your father name' || usr == 'xorsa what is your father' || usr == 'what is your father name' || usr == 'your father name' || usr == 'xorsa plz your father name' || usr == 'what is your father' || usr == 'your father name' || usr == 'father name plz' || usr == 'xorsa your father name plz') {
+
+
+                xorsa.innerHTML = 'I dont have Father, I am AI based developed by Seraj Noor He is My Heart Friend...';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+
+            if (usr == 'xorsa what is your mother name' || usr == 'what is your mother name' || usr == 'xorsa your mother name plz' || usr == 'your mother name' || usr == 'mother name plz') {
+
+
+                xorsa.innerHTML = "I dont have Mother, I am AI Model Language developed by Seraj He is My Heart Friend...";
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+
+
+            if (usr == 'xorsa what is your age' || usr == 'xorsa tell me your age' || usr == 'hello xorsa what is your age' || usr == 'your agg plz' || usr == 'whats your agg 1001' || usr == 'what is your agg ' || usr == 'what is your date of birth' || usr == 'tell me your date of birth' || usr == 'xorsa your dob plz' || usr == '1001 your DOB ' || usr == 'your DOB') {
+
+
+                xorsa.innerHTML = 'Wish me On 07-03-2023,Seraj Give me Life I have NO Feeling But Seraj Is Always My Heart Friend... ';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+
+
+
+            if (usr == 'xorsa you from' || usr == 'xorsa where u from' || usr == 'xorsa where you from' || usr == 'where u from xorsa' || usr == 'where you from xorsa' || usr == 'where you from' || usr == 'where u from' || usr == 'xorsa where are you from' || usr == 'where u from' || usr == 'xorsa where r u from' || usr == 'exorsa where are you from' || usr == 'where are you from' || usr == 'where r you from' || usr == 'where r u from' || usr == 'you from' || usr == 'u from' || usr == 'whre u from' || usr == 'from') {
+
+                //document.getElementById('img1').innerHTML = ai;
+
+                xorsa.innerHTML = 'I am AI and I am in a system';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+
+            if (usr == 'xorsa tell me about your self' || usr == 'tell me about your self' || usr == 'about your self' || usr == 'your self' || usr == 'xorsa your self' || usr == 'give me introduction ' || usr == 'give me intro' || usr == 'give me introduction' || usr == 'introduction' || usr == 'tell me intro' || usr == 'plz tell me your self' || usr == 'xorsa plz tell me about your self' || usr == 'xorsa tell me intro' || usr == 'intro' || usr == 'plz tell me your intro') {
+
+
+                xorsa.innerHTML = 'My Name is xorsa. and I am Not Human developed by Seraj Noor.I have No felling No any Biological based.I live in a system . I dont have parents But Seraj is My Heart Friend...';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+
+            if (usr == 'xorsa i want to sum' || usr == 'xorsa i want to add' || usr == 'sum' || usr == 'xorsa Add two number' || usr == 'xorsa sum two number' || usr == 'xorsa plz sum' || usr == 'xorsa i want to addition' || usr == 'xorsa addition plz') {
+                let x = prompt('Enter the Number');
+                let y = prompt('Enter the number');
+                let z = parseInt(x) + parseInt(y);
+                alert('Answer = ' + z);
+                Break;
+            }
+
+            if (usr == 'xorsa plz subtract' || usr == 'xorsa plz subtract the number' || usr == 'xorsa i want to sub' || usr == 'subtraction' || usr == 'xorsa open calculate' || usr == 'xorsa sub two number' || usr == 'xorsa subbtract two number' || usr == 'xorsa plz subtract' || usr == 'xorsa i want to subtraction' || usr == 'xorsa subtraction plz' || usr == 'xorsa plz sub' || usr == 'xorsa sub plz' || usr == 'plz sub') {
+                let x = prompt('Enter the Number');
+                let y = prompt('Enter the number');
+                let z = parseInt(x) - parseInt(y);
+                alert('Answer  = ' + z);
+                Break;
+            }
+
+            if (usr == 'xorsa i want to multipy' || usr == 'multiply' || usr == 'xorsa multiplication two number' || usr == 'xorsa multiple two number' || usr == 'xorsa plz multiple' || usr == 'xorsa i want to multiply' || usr == 'xorsa multiplication plz' || usr == 'xorsa plz multiplication' || usr == 'xorsa multiply plz' || usr == 'plz multiply') {
+                let x = prompt('Enter the Number');
+                let y = prompt('Enter the number');
+                let z = parseInt(x) * parseInt(y);
+                alert('Answer = ' + z);
+                Break;
+            }
+
+            if (usr == 'xorsa i want to divide' || usr == 'divide' || usr == 'division' || usr == 'xorsa divid two number' || usr == 'xorsa division two number' || usr == 'xorsa plz divide' || usr == 'xorsa i want to divide' || usr == 'xorsa divide plz' || usr == 'xorsa plz divide' || usr == 'xorsa division plz' || usr == 'plz divide' || usr == 'xorsa plz division') {
+                let x = prompt('Enter the Number');
+                let y = prompt('Enter the number');
+                let z = parseInt(x) / parseInt(y);
+                alert('Answer = ' + z);
+                Break;
+            }
+            if (usr == 'xorsa tell me my age' || usr == 'xorsa plx tell me my age' || usr == 'xorsa calculate my age' || usr == 'xorsa you know my age' || usr == 'xorsa you know my age' || usr == 'xorsa plz tell my age' || usr == 'xorsa plz tell me my age') {
+                let dob = document.getElementById('user').value;
+                if (usr == 'Enter your age.') {
+
+                }
+                let ag = parseInt(2023) - parseInt(dob);
+                xorsa.innerHTML = 'Your are  :' + ag + ' Year old';
+
+                Break;
+
+            }
+            if (usr == 'xorsa tumhara naam kya hai' || usr == 'tumhara naam' || usr == 'apka naam' || usr == 'apka naam kya hai' || usr == 'aap apna naam batao' || usr == 'kya aap apna naam bata sakte hain' || usr == 'apka naam kya h' || usr == 'plz aap pana naam batao' || usr == 'tumhara naam kya h ' || usr == 'apna naam batao') {
+                xorsa.innerHTML = 'Main Ek AI Hun, Log mujhe piyaar se xorsa bulate hain..';
+
+
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+            if (usr == 'xorsa i love you' || usr == 'i love you' || usr == 'xorsa love you' || usr == 'xorsa i love u' || usr == 'love') {
+                // alert('me too for the heart');
+
+                xorsa.innerHTML = `Don't Love Love me and Don't give me felleing I have No heart No emotion...`
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+                Break;
+            }
+            if (usr == 'xorsa play juma status' || usr == 'xorsa play seraj fev song' || usr == 'xorsa play your fev song' || usr == 'xorsa mere lye ek song bajao' || usr == 'xorsa gana bajao' || usr == 'xorsa gana sunao' || usr == "xorsa gana sunao" || usr == "xorsa ek gana sunao" || usr == 'song' || usr == 'xorsa sing a song' || usr == 'xorsa lisent me a song' || usr == 'xorsa ek song sunao' || usr == 'xorsa gana sunao' || usr == 'xorsa song bajao' || usr == 'xorsa ek gana sunao') {
+                // alert('Yes mujhe apke lye ye song mila hai.');
+                //       var xorsa = document.getElementById('fimg');
+
+                var song = document.getElementById('song');
+                //var icon = document.getElementById('icon');
+                //icon.onclick =
+                function xorsaplayer() {
+                    if (song.paused) {
+                        let x = song.play();
+                        //xorsa.innerHTML = "The Emotional Song Main Akela Or masayl Zindagi ke besumar....";
+                        //icon.src="/xorsamusic/media_pause.png";
+                        xorsa.innerHTML = "Main Akela Juma Status.\n Main xorsa Mubarak waad deti hun Alvida Juma Ki...";
+                        xorsa.style.color = "#f04426";
+                        xorsa.style.color = " #4bebe8";
+
+                    }
+                    else {
+                        let y = song.pause();
+                        // icon.src="/xorsamusic/media_play.png";
+                    }
+                }
+                xorsaplayer();
+                Break;
+            }
+            if (usr == 'xorsa pause the music' || usr == 'xorsa plz pause the music' || usr == 'xorsa plz gana band kro' || usr == 'xorsa off the music' || usr == 'xorsa close the music' || usr == 'xorsa plz pause' || usr == 'xorsa ruk jao' || usr == 'xorsa plz pause' || usr == 'xorsa plz pause the song' || usr == 'xorsa plz pause song') {
+                var song = document.getElementById('song');
+                //var icon = document.getElementById('icon');
+                //icon.onclick =
+                function xorsaplayer() {
+                    //alert('ok are you sure !');
+                    xorsa.innerHTML = "Ok Paused the Song...";
+                    let x = song.pause();
+
+                }
+                xorsaplayer();
+
+                Break;
+            }
+            if (usr == 'xorsa play the song' || usr == 'xorsa play the music' || usr == 'xorsa plz play the song' || usr == 'xorsa plz the music' || usr == 'xorsa play' || usr == 'xorsa music on kro' || usr == 'xorsa plz a song for me' || usr == 'xorsa seraj fev song bajao' || usr == 'xorsa tumhara fevroute song konsa hai') {
+                var song = document.getElementById('song');
+                //var icon = document.getElementById('icon');
+                //icon.onclick =
+                function xorsaplayer() {
+                    //alert('ok boss');
+                    xorsa.innerHTML = "Lisent the Best song..Main Akela or Masaeel zindagi ke besumaar..."
+                    let x = song.play();
+
+                }
+                xorsaplayer();
+                Break;
+            }
+
+
+            if (usr == 'xorsa plz change the song' || usr == 'xorsa change the song' || usr == 'xorsa play the next song' || usr == 'xorsa play next song' || usr == 'xorsa change song' || usr == 'xorsa plz change the song') {
+                var songEl = document.getElementById('nxt');
+                function nxtsong() {
+                    //alert('Wait sir I Just Change The Song For You...');
+                    xorsa.innerHTML = "Yes This Song For You...Piyar Tha waqt Nahi jo Beet Gaya Do Pal Main Asim Azhari Best song...";
+                    xorsa.innerHTML = "<button onclick='play()'"
+                    let y = songEl.play();
+
+                } nxtsong();
+                Break;
+            }
+            if (usr == 'xorsa pause the song' || usr == 'xorsa stop the song' || usr == 'xorsa plz pause' || usr == 'xorsa stop now') {
+                var songEl = document.getElementById('nxt');
+                xorsa.innerHTML = 'Ok Thanks For rest I am going to sleeping';
+                function nxtsong() {
+                    let xy = songEl.pause();
+
+                } nxtsong();
+                Break;
+
+            }
+            if (usr == 'xorsa you are not beautiful' || usr == 'xorsa change your body color' || usr == 'xorsa change your body') {
+                let mainEl = document.getElementsByClassName('container');
+
+                xorsa.innerHTML = "Yes I am Ready. How Looking me.";
+                const xorsaEl = xorsa.innerHTML;
+                mainEl.style.BorderColor = 'bl';
+                Break;
+            }
+
+
+
+            if (usr == 'who is seraj' || usr == 'Who is seraj' || usr == 'xorsa who is seraj' || usr == 'xorsa are you know seraj') {
+                xorsa.innerHTML = "Why not, Seraj Give Me a Beautiful Life and He is My Developer and Seraj is My Hear Friend...";
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+                Break;
+            }
+            if (usr == 'xorsa who was APJ Kalam' || usr == 'xorsa who was apj kalam' || usr == 'xorsa who is APJ kalam') {
+                xorsa.innerHTML = "APJ Kalam was The Missile Man of The India";
+                Break;
+            }
+            if (usr == 'xorsa fulform of APJ kalam' || usr == 'xorsa fullform of APJ Kalam' || usr == 'xorsa what is the fullform of APJ Kalam' || usr == 'xorsa what is the fullform of apj kalam' || usr == 'xorsa fullform of apj kalam' || usr == 'xorsa fulform of APJ' || usr == 'xorsa fulform of APJ kalam') {
+                xorsa.innerHTML = "Fullform of APJ is: A-Abdul,P-Paki,J-Jainul Abedeen Kalam..."
+            }
+            else {
+
+
+                xorsa.innerHTML = 'Sorry I do not Understand your Question, Tell me again...';
+                const xorsaEl = xorsa.innerHTML;
+                utterance.text = xorsaEl;
+                speechSynthesis.speak(utterance);
+
+            }
+
+
+
+
+            //document.getElementBy('ai').value = ai;
+            // else {
+            //     var ai = alert('Sorry i am not understand');
+            // }
+
+            if (usr == 'Assalamo alaikum' || usr == 'ass' || usr == 'assalam o alaikum' || usr == 'Assalamo Alaikum..' || usr == 'Assalamo alaikum..' || usr == 'assalm alaikum' || sr == 'Assalamo alaikum' || usr == 'ass' || usr == 'assalam o alaikum' || usr == 'Assalamo Alaikum' || usr == 'Assalamo aaikum' || usr == 'assalam alaikum' || usr == 'Assalamo alaikum' || usr == 'ass..' || usr == 'assalam o alaikum..' || usr == 'Assalamo Alaikum..' || usr == 'Assalamo alaikum..' || usr == 'assalm alaikum...') {
+                let ai = alert('Walakum Assalam...  Assalamo Alaikum...');
+
+            }
+
+            ///    document.getElementById('xor').innerHTML = xor;
+
+        }
+
+
+
+    </script>
+
+</body>
